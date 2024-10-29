@@ -1,3 +1,6 @@
+#!/usr/bin/racket
+#lang racket
+
 (require spd/tags)
 (require 2htdp/universe)
 (require 2htdp/image)

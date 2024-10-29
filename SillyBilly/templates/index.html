@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Omg Billy</title>
+  <link rel = "icon" href = "https://i.natgeofe.com/n/d472dd3c-8d38-4eed-ae62-7472a12a17de/secretary-bird-thumbnail-nationalgeographic_2331336_3x2.jpg" type = image/x-icon >
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='templates/style.css') }}" />
+  <h1 id="headline"> no Bot</h1>
+</head>
+
+<body>
+  Did you know that the wild billy is actually not a billy? In fact the wild blly can even be considered a big billy.
+
+
+<p id="webhookHeader"><b>The Webhook</b></p>
+  
+  <label for="WebHookLabel">WebHook:</label> <br>
+  <textarea cols="50" rows="4" id="WebHookBox" name="WebHookBox"></textarea><br><br>
+
+<p><b>The actual Text and sending part </b></p>
+    
+  <label for="Namelabel">Name:</label> <br>
+  <input type="text" id="Name" name="Namebox"><br><br>
+  <label for="Textlabel">Text:</label> <br>
+  <input type="text" id="Text" name="Textbox"> <br>
+  <button  onclick="SendMessage()">Send Message</button>
+  <!--
+  <button onclick="TestGay()" type="button">Fuck off click this to close tab</button>
+-->
+
+<script src="{{url_for('static', filename='mainScript.js')}}"></script>
+
+<script></script>
+<!--
+<script src="{{url_for('static',filename='index.js')}}" type="application/javascript"></script>
+-->
+  <!--
+<script src="static/mainScript.js"></script>
+  -->
+<!--
+wtf is the birdd
+
+  href= "{{ url_for('static',filename='styles/user.css') }}"
+  -->
+<img src="https://cc-prod.scene7.com/is/image/CCProdAuthor/how_to_cut_out_images_photoshop_P1_mobile_360x270?$pjpeg$&jpegSize=200&wid=720" alt="Ur a looser" height=20 width=25>
+
+  <img src="{{url_for('static', filename='grg.jpg')}}" alt="kys" height=20 widght=25>
+</body>
+
+</html>

@@ -1,3 +1,2 @@
-import os
-
-print(os.system("date"))
+import discord.py
+    

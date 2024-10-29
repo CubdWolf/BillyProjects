@@ -3,6 +3,8 @@ import time
 import subprocess
 import webbrowser
 
+time.sleep(0.2) #added wait orelse input takes filepath. Defo other fix, but lazy.
+
 # Im not good enough at python u need to teach me
 #Learn English you retarded
 def cls():
@@ -102,8 +104,10 @@ def ChooseThePoop():
 
     @app.route('/')
     def index():
-      webHook = os.environ["WebHook"]
-      return render_template("index.html", webHook=webHook)
+      #import Secrets
+      #webHook = Secrets.webHook
+      #webHook = "ok"
+      return render_template("index.html")#, webHook=webHook)
 
       
     if __name__ == "__main__":

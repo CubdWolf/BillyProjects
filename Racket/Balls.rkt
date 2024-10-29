@@ -1,10 +1,10 @@
 #!/usr/bin/racket
 #lang racket
 
-(require spd/tags)
+
 (require 2htdp/universe)
 (require 2htdp/image)
-(@htdw ListOfBall)
+
 
 (define WIDTH  605)
 (define HEIGHT 535)
@@ -28,19 +28,19 @@
 (define MTS (rectangle WIDTH HEIGHT "solid" "green"))
 
 
-(@htdd Ball)
+
 (define-struct ball (x y dx dy))
 
 
-(@htdd ListOfBall)
 
 
-(@htdd Game)
+
+
 (define-struct game (balls paddle))
 (define G0 (make-game (cons (make-ball 0 0 1 1) empty) 0))
 
 
-(@htdf main)
+
 (define (main g)
   (big-bang g
     (on-draw   render-game)  
@@ -50,7 +50,7 @@
 
 
 
-(@htdf render-game)
+
 
 (define (render-game g)
   (render-balls (game-balls g) (game-paddle g)))
@@ -61,7 +61,6 @@
 
 
 
-(@htdf render-balls)
 
 (define (render-balls lob p)
   (cond [(empty? lob)(place-image PADDLE p PADDLE-CTR-Y MTS)]
@@ -77,7 +76,7 @@
 
 
 
-(@htdf next-game)
+
 
 (define (next-game g)
   (cond [(balls-touch-paddle? (game-balls g)(game-paddle g))
@@ -87,7 +86,6 @@
 
 
 
-(@htdf game-with-next-balls)
 
 (define (game-with-next-balls g)
   (make-game (next-balls (game-balls g)) (game-paddle g)))
@@ -98,7 +96,6 @@
 
 
 
-(@htdf game-with-caught-balls)
 
 (define (game-with-caught-balls g)
   (make-game (next-balls
@@ -107,8 +104,6 @@
 
 
 
-
-(@htdf remove-balls)
 (define (remove-balls lob p)
   (cond [(empty? lob) empty]
         [else (if (touch-paddle? (first lob) p)
@@ -117,7 +112,6 @@
       
        
 
-(@htdf next-balls)
 (define (next-balls lob)
   (cond [(empty? lob) empty]
         [else
@@ -125,7 +119,7 @@
                (next-balls (rest lob)))]))
 
 
-(@htdf next-ball)
+
 (define (next-ball b)
   (cond [(touch-top?    b) (bounce-top b)]
         [(touch-bottom? b) (bounce-bottom b)]
@@ -135,7 +129,6 @@
          (glide b)]))
 
 
-(@htdf handle-mouse)
 (define (handle-mouse g x y me)
   (cond [(mouse=? me "button-down")
          (make-game
@@ -145,7 +138,6 @@
         [else g]))
 
 
-(@htdf handle-key)
 
 (define (handle-key g ke)
   (cond [(key=? ke " ") (make-game empty (game-paddle g))]
@@ -156,8 +148,7 @@
                     (+ (game-paddle g) PADDLE-MOVE-PER-KEY))]     
         [else g]))
 
-(@htdf balls-touch-paddle?)
- 
+
 
 (define (balls-touch-paddle? lob p)
   (cond [(empty? lob) false]
@@ -169,8 +160,6 @@
 
 
 
-(@htdf touch-paddle?) 
-
 (define (touch-paddle? b p)
   (and (<= (- p (/ PADDLE-WIDTH 2))
            (ball-x b)
@@ -180,52 +169,47 @@
            (+ PADDLE-CTR-Y (/ PADDLE-THICKNESS 2)))))
 
 
-(@htdf touch-top?)
 (define (touch-top? b)
   (<= (+ (ball-y b) (ball-dy b)) TOP))
 
 
-(@htdf touch-bottom?)
+
 
 (define (touch-bottom? b)
   (>= (+ (ball-y b) (ball-dy b)) BOT))
 
 
-(@htdf touch-left?)
-
 (define (touch-left? b)
   (<= (+ (ball-x b) (ball-dx b)) LEF))
 
 
-(@htdf touch-right?)
+
 
 (define (touch-right? b)
   (>= (+ (ball-x b) (ball-dx b)) RIG))
 
 
-(@htdf bounce-top)
 
 (define (bounce-top b)
   (make-ball (ball-x b) (+ TOP 1) (ball-dx b) (- (ball-dy b))))
 
 
-(@htdf bounce-bottom)
 
 (define (bounce-bottom b)
   (make-ball (ball-x b) (- BOT 1) (ball-dx b) (- (ball-dy b))))
 
-(@htdf bounce-left)
+
 
 (define (bounce-left b)
   (make-ball (+ LEF 1) (ball-y b) (- (ball-dx b)) (ball-dy b) ))
 
 
-(@htdf bounce-right)
+
 (define (bounce-right b)
   (make-ball (- RIG 1) (ball-y b) (- (ball-dx b)) (ball-dy b)))
 
 
-(@htdf glide)
+
 
 (define (glide b)
   (make-ball (+ (ball-x b) (ball-dx b))

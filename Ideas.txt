@@ -1,0 +1,1 @@
+1) write a bot that sends a different image of gedagedi to jerm everyday (either using a real account or a bot.)
